@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     // remember THIS IS FOR THE PLAYER
     // Player facing is being affected and managed in the Gun arm elements section (thanks past steve)
 
+    #region Variables
+
+    public static PlayerController instance; // set a static instance of the player that will be accessible from other scripts
     public float moveSpeed; // Set the speed that player can move
     private Vector2 moveInput; // keeps track of what the player is pressing
     public Rigidbody2D rigidBody; // Reference to the player parent element rigidbody
@@ -19,6 +22,12 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenShots; // how long to wait between each shot
     private float shotCounter; // to use to track how fast shots should be fired
 
+    #endregion
+
+    private void Awake()
+    {
+        instance = this; // to make a single instance of the player
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +113,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
         #endregion
     }
 }
